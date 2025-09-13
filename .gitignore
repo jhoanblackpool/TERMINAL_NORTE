@@ -1,0 +1,45 @@
+
+### Archivos de registro (Logs) ###
+*.log
+
+
+
+### Archivos de ejecución (Runtime) ###
+*.pid
+*.seed
+*.pid.lock
+
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+
+# Otros archivos de editor
+*.swp
+*~
+
+### Archivos del sistema operativo ###
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+### Variables de entorno ###
+.env
+
+
+
+
+
+### Específico de Python ###
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+/.venv
