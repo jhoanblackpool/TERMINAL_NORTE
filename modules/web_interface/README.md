@@ -1,167 +1,315 @@
-# Centro de Ejecución de Robots
+# 🤖 Centro de Ejecución de Robots
 
-Una interfaz web moderna para gestionar y ejecutar agentes de automatización de forma segura.
+Una aplicación web moderna para la gestión y ejecución de agentes automatizados, construida con Python (Eel) y tecnologías web modernas.
 
-## 🚀 Características
+## ✨ Características Principales
 
-- **Interfaz moderna y responsiva** con diseño glassmorphism
-- **Búsqueda y filtrado avanzado** por área, estado y función
-- **Monitoreo en tiempo real** del estado de los agentes
-- **Ejecución segura** de agentes con validación de estado
-- **Vista de cuadrícula y lista** para mejor organización
-- **Detalles completos** con estadísticas de rendimiento
-- **Notificaciones toast** para feedback inmediato
+- **🎯 Gestión Centralizada**: Visualiza y controla todos tus agentes desde una interfaz única
+- **⚡ Ejecución en Tiempo Real**: Ejecuta agentes con feedback inmediato y monitoreo de estado
+- **🔍 Búsqueda Avanzada**: Filtra agentes por nombre, área, estado y descripción
+- **📊 Estadísticas Detalladas**: Monitorea rendimiento, tasa de éxito y tiempos de ejecución
+- **🎨 Interfaz Moderna**: Diseño responsivo con soporte para modo oscuro y accesibilidad
+- **🔒 Seguridad**: Confirmaciones para agentes críticos y validación de datos
+- **📱 Responsive**: Funciona perfectamente en desktop, tablet y móvil
+- **🌐 Offline Support**: Funcionalidad básica disponible sin conexión
+
+## 🚀 Inicio Rápido
+
+### Prerrequisitos
+
+- Python 3.8 o superior
+- Navegador web moderno (Chrome, Firefox, Safari, Edge)
+
+### Instalación
+
+1. **Clona el repositorio**
+   ```bash
+   git clone https://github.com/tu-usuario/centro-robots.git
+   cd centro-robots
+   ```
+
+2. **Crea un entorno virtual**
+   ```bash
+   python -m venv venv
+   
+   # Windows
+   venv\Scripts\activate
+   
+   # macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. **Instala las dependencias**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configura la aplicación** (opcional)
+   ```bash
+   cp config.json.example config.json
+   # Edita config.json según tus necesidades
+   ```
+
+5. **Ejecuta la aplicación**
+   ```bash
+   python app.py
+   ```
+
+6. **Abre tu navegador**
+   - La aplicación se abrirá automáticamente en `http://localhost:8080`
+   - Si no se abre automáticamente, navega manualmente a la URL
 
 ## 📁 Estructura del Proyecto
 
 ```
-modules/web_interface/
-├── app.py                 # Servidor Eel y funciones expuestas
-├── web/
-│   ├── index.html        # Interfaz principal
-│   ├── styles.css        # Estilos CSS
-│   └── script.js         # Lógica JavaScript
-├── requirements.txt      # Dependencias Python
-└── README.md            # Este archivo
+centro-robots/
+├── app.py                  # Aplicación principal Python
+├── config.json            # Configuración de la aplicación
+├── requirements.txt        # Dependencias Python
+├── README.md              # Este archivo
+├── robot_center.log       # Logs de la aplicación
+├── web/                   # Frontend web
+│   ├── index.html         # Página principal
+│   ├── script.js          # Lógica JavaScript
+│   └── styles.css         # Estilos CSS
+└── docs/                  # Documentación adicional
 ```
 
-## 🛠️ Instalación
+## ⚙️ Configuración
 
-### 1. Clonar o crear el directorio
-```bash
-mkdir -p modules/web_interface
-cd modules/web_interface
+### Archivo config.json
+
+```json
+{
+    "puerto": 8080,
+    "modo_debug": false,
+    "timeout_ejecucion": 30,
+    "seguridad": {
+        "confirmar_ejecucion_critica": true,
+        "areas_criticas": ["Finanzas", "Legal"]
+    }
+}
 ```
 
-### 2. Crear entorno virtual (recomendado)
-```bash
-python -m venv venv
+### Variables de Entorno
 
-# En Windows
-venv\Scripts\activate
-
-# En macOS/Linux
-source venv/bin/activate
-```
-
-### 3. Instalar dependencias
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Crear la estructura de directorios
-```bash
-mkdir web
-```
-
-### 5. Colocar los archivos
-- `app.py` en la raíz del directorio
-- `index.html`, `styles.css`, `script.js` en la carpeta `web/`
-
-## 🚀 Ejecución
+Puedes usar variables de entorno para configuración sensible:
 
 ```bash
-python app.py
+export ROBOT_CENTER_PORT=8080
+export ROBOT_CENTER_DEBUG=false
+export ROBOT_CENTER_SECRET_KEY=tu-clave-secreta
 ```
 
-La aplicación se abrirá automáticamente en tu navegador en `http://localhost:8080`
+## 🎮 Uso de la Aplicación
 
-## 💡 Uso
+### Panel de Control
 
-### Funciones Principales
+1. **Búsqueda**: Usa la barra de búsqueda para encontrar agentes específicos
+2. **Filtros**: Filtra por área (Finanzas, Operaciones, etc.) y estado (Activo, Inactivo)
+3. **Vista**: Cambia entre vista de cuadrícula y lista
+4. **Actualización**: Refresca los datos manualmente o automáticamente
 
-1. **Buscar Agentes**: Utiliza la barra de búsqueda para encontrar agentes por nombre o función
-2. **Filtrar por Área**: Selecciona un área específica (Finanzas, Operaciones, etc.)
-3. **Filtrar por Estado**: Muestra solo agentes activos o en mantenimiento
-4. **Ejecutar Agente**: Haz clic en "Ejecutar" para iniciar un agente (solo disponible si está activo)
-5. **Ver Detalles**: Obtén información completa sobre el rendimiento del agente
-6. **Cambiar Vista**: Alterna entre vista de cuadrícula y lista
+### Gestión de Agentes
 
-### Agentes Incluidos
+- **Ejecutar**: Haz clic en "Ejecutar" para iniciar un agente activo
+- **Detalles**: Ve estadísticas completas, logs y dependencias
+- **Estados**: Los agentes pueden estar Activos, En mantenimiento o Inactivos
 
-- **Agente Contable** (Finanzas): Envío automático de facturas y recordatorios
-- **Agente Compras** (Operaciones): Descarga de órdenes y conciliación con proveedores  
-- **Agente Soporte** (CX): Clasificación de tickets y respuestas sugeridas
-- **Agente Logística** (Operaciones): Descarga de guías y alertas de entrega
-- **Agente Recaudo** (Finanzas): Notificación de pagos y conciliación bancaria
-- **Agente Legal** (Backoffice): Validación documental y seguimiento de contratos
+### Atajos de Teclado
 
-## 🔧 Personalización
+- `Ctrl + F`: Enfocar búsqueda
+- `Ctrl + R`: Actualizar datos
+- `Esc`: Cerrar modales
+- `Tab`: Navegación por teclado
+
+## 🔧 Desarrollo
+
+### Configurar Entorno de Desarrollo
+
+```bash
+# Instalar dependencias de desarrollo
+pip install -r requirements-dev.txt
+
+# Ejecutar tests
+pytest
+
+# Formatear código
+black .
+
+# Verificar estilo
+flake8
+
+# Verificar tipos
+mypy app.py
+```
+
+### Estructura de Código
+
+- **Backend** (`app.py`): API Python con Eel, validación y logs
+- **Frontend** (`web/`): HTML5, CSS3 moderno, JavaScript ES6+
+- **Configuración**: JSON para configuración, logging estructurado
 
 ### Agregar Nuevos Agentes
 
-Modifica la lista `agentes_data` en `app.py`:
+1. Modifica `agentes_data` en `app.py`
+2. Agrega la lógica de ejecución específica
+3. Actualiza tests y documentación
 
-```python
-agentes_data.append({
-    "id": 7,
-    "nombre": "Mi Nuevo Agente",
-    "area": "Mi Área",
-    "estado": "Activo",
-    "descripcion": "Descripción de lo que hace el agente",
-    "color_estado": "success"
-})
+## 🧪 Testing
+
+```bash
+# Ejecutar todos los tests
+pytest
+
+# Tests con cobertura
+pytest --cov=app
+
+# Tests específicos
+pytest tests/test_agentes.py
+
+# Tests de interfaz (requiere Selenium)
+pytest tests/test_ui.py
 ```
 
-### Modificar Estilos
+## 📦 Construcción y Despliegue
 
-Edita `web/styles.css` para cambiar:
-- Colores del tema
-- Tamaños y espaciado
-- Efectos visuales
-- Responsividad
+### Crear Ejecutable
 
-### Agregar Funcionalidades
+```bash
+# Generar ejecutable con PyInstaller
+pyinstaller --onefile --windowed app.py
 
-Extiende `app.py` con nuevas funciones:
-
-```python
-@eel.expose
-def mi_nueva_funcion():
-    # Tu lógica aquí
-    return resultado
+# El ejecutable estará en dist/
 ```
 
-Y úsala en `web/script.js`:
+### Docker
 
-```javascript
-const resultado = await eel.mi_nueva_funcion()();
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+EXPOSE 8080
+CMD ["python", "app.py"]
 ```
+
+### Despliegue en Servidor
+
+1. **Nginx + uWSGI** para producción
+2. **Systemd service** para auto-inicio
+3. **SSL/TLS** con Let's Encrypt
+4. **Monitoreo** con logs centralizados
+
+## 🔒 Seguridad
+
+- ✅ Validación de entrada en backend
+- ✅ Escape de HTML para prevenir XSS
+- ✅ Confirmaciones para operaciones críticas
+- ✅ Logs de auditoría completos
+- ✅ Timeouts de sesión configurables
+
+## 🎨 Personalización
+
+### Temas
+
+Modifica `styles.css` para personalizar:
+- Colores de marca
+- Fuentes corporativas
+- Espaciado y layout
+- Animaciones
+
+### Funcionalidad
+
+Extiende `script.js` para:
+- Nuevas funciones de filtrado
+- Integraciones con APIs externas
+- Notificaciones personalizadas
+- Dashboards adicionales
 
 ## 🐛 Solución de Problemas
 
-### La aplicación no se abre
-- Verifica que todas las dependencias estén instaladas
-- Asegúrate de que el puerto 8080 esté disponible
-- Comprueba que Chrome esté instalado (Eel lo prefiere)
+### Problemas Comunes
 
-### Errores de conexión
-- Reinicia la aplicación
-- Verifica que no haya firewall bloqueando el puerto
-- Revisa la consola de Python para errores específicos
+**❌ Error: Puerto en uso**
+```bash
+# Cambiar puerto en config.json o matar proceso
+lsof -ti:8080 | xargs kill -9
+```
 
-### Problemas de interfaz
-- Actualiza el navegador (Ctrl+F5)
-- Verifica que todos los archivos estén en las carpetas correctas
-- Revisa la consola del navegador (F12) para errores JavaScript
+**❌ Agentes no cargan**
+- Verificar logs en `robot_center.log`
+- Revisar configuración de base de datos
+- Comprobar permisos de archivos
 
-## 📝 Notas Técnicas
+**❌ Interfaz no responde**
+- Limpiar caché del navegador
+- Verificar JavaScript en consola del navegador
+- Comprobar conexión a internet
 
-- **Eel**: Framework que conecta Python con interfaces web
-- **Responsive Design**: Compatible con móviles y tablets
-- **Glassmorphism**: Efectos visuales modernos con transparencias
-- **Debouncing**: Optimización de búsqueda en tiempo real
-- **Error Handling**: Manejo robusto de errores y notificaciones
+### Logs y Debugging
 
-## 🤝 Contribuciones
+```bash
+# Ver logs en tiempo real
+tail -f robot_center.log
 
-Para contribuir al proyecto:
-1. Haz fork del repositorio
-2. Crea una rama para tu feature
-3. Implementa los cambios
-4. Prueba exhaustivamente
-5. Envía un pull request
+# Activar modo debug
+# En config.json: "modo_debug": true
+
+# Logs detallados
+export PYTHONPATH=. && python -m logging.basicConfig level=DEBUG
+```
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+### Guías de Contribución
+
+- Sigue PEP 8 para Python
+- Usa ESLint para JavaScript
+- Agrega tests para nuevas funcionalidades
+- Actualiza documentación
+- Mantén commits atómicos y descriptivos
+
+## 📝 Changelog
+
+### v2.1.0 (Actual)
+- ✨ Sistema de notificaciones toast mejorado
+- 🔧 Modal funcional para detalles de agentes
+- 🎨 Mejoras de accesibilidad y responsive
+- 🐛 Corrección de filtros y debounce
+- 📊 Estadísticas detalladas de agentes
+- 🔒 Validación robusta de entrada
+
+### v2.0.0
+- 🎉 Interfaz completamente rediseñada
+- ⚡ Migración a Eel framework
+- 📱 Soporte responsive completo
+- 🔍 Sistema de búsqueda mejorado
 
 ## 📄 Licencia
 
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+
+## 👥 Equipo
+
+- **Desarrollador Principal**: Tu Nombre (@tu-usuario)
+- **UI/UX**: Diseñador UI
+- **DevOps**: Especialista DevOps
+
+## 📞 Soporte
+
+- 📧 **Email**: soporte@empresa.com
+- 💬 **Chat**: [Slack/Teams]
+- 🐛 **Issues**: [GitHub Issues](https://github.com/tu-usuario/centro-robots/issues)
+- 📖 **Docs**: [Documentación Completa](https://docs.empresa.com/centro-robots)
+
+---
+
+**⭐ Si este proyecto te resulta útil, no olvides darle una estrella en GitHub!**

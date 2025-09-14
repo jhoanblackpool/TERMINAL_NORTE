@@ -1,0 +1,37 @@
+{
+    "puerto": 8080,
+    "modo_debug": false,
+    "timeout_ejecucion": 30,
+    "max_intentos_ejecucion": 3,
+    "host": "localhost",
+    "auto_refresh_interval": 300000,
+    "logs": {
+        "nivel": "INFO",
+        "archivo": "robot_center.log",
+        "max_size_mb": 10,
+        "backup_count": 5
+    },
+    "interfaz": {
+        "titulo": "Centro de Ejecución de Robots",
+        "tema_oscuro": false,
+        "animaciones": true,
+        "notificaciones_sonido": false
+    },
+    "seguridad": {
+        "confirmar_ejecucion_critica": true,
+        "areas_criticas": ["Finanzas", "Legal", "Backoffice"],
+        "timeout_sesion_minutos": 60
+    },
+    "base_datos": {
+        "url": "sqlite:///robots.db",
+        "pool_size": 10,
+        "echo": false
+    },
+    "notificaciones": {
+        "email_enabled": false,
+        "smtp_server": "",
+        "smtp_port": 587,
+        "email_usuario": "",
+        "email_password": ""
+    }
+}

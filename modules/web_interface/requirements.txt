@@ -1,0 +1,44 @@
+# Centro de Ejecución de Robots - Dependencias
+
+# Framework principal
+eel==0.16.0
+
+# Utilidades de sistema
+#psutil==5.9.5
+
+# Manejo de fechas
+#python-dateutil==2.8.2
+
+# Logging avanzado
+#coloredlogs==15.0.1
+
+# Base de datos (opcional)
+#sqlalchemy==2.0.23
+#sqlite3
+
+# Validación de datos
+#pydantic==2.5.0
+
+# Configuración
+#python-dotenv==1.0.0
+
+# Notificaciones (opcional)
+#plyer==2.1.0
+
+# Testing
+#pytest==7.4.3
+#pytest-cov==4.1.0
+
+# Desarrollo
+#black==23.11.0
+#flake8==6.1.0
+#mypy==1.7.1
+
+# Documentación
+#sphinx==7.2.6
+
+# Empaquetado
+#pyinstaller==6.2.0
+
+# Monitoreo
+#watchdog==3.0.0
