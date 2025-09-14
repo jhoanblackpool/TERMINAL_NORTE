@@ -36,13 +36,13 @@ class PDFProcessor:
         self.config = config or {}
         
         # Inicializar componentes
-        self.file_manager = FileManager(base_path, config.get('file_manager', {}))
+        self.file_manager = FileManager(base_path, self.config.get('file_manager', {}))
         self.data_extractor = DataExtractor(
-            patrones_cliente=config.get('patrones_cliente'),
-            patrones_local=config.get('patrones_local'),
-            patrones_adicionales=config.get('patrones_adicionales')
+            patrones_cliente=self.config.get('patrones_cliente'),
+            patrones_local=self.config.get('patrones_local'),
+            patrones_adicionales=self.config.get('patrones_adicionales')
         )
-        self.validator = PDFValidator(config.get('validator', {}))
+        self.validator = PDFValidator(self.config.get('validator', {}))
         
         # Estadísticas del procesamiento
         self.estadisticas = {
@@ -56,10 +56,10 @@ class PDFProcessor:
         }
         
         # Configuración de procesamiento
-        self.crear_backup = config.get('crear_backup', True)
-        self.validar_antes = config.get('validar_antes_procesar', True)
-        self.guardar_metadata = config.get('guardar_metadata', True)
-        self.eliminar_originales = config.get('eliminar_originales', True)
+        self.crear_backup = self.config.get('crear_backup', True)
+        self.validar_antes = self.config.get('validar_antes_procesar', True)
+        self.guardar_metadata = self.config.get('guardar_metadata', True)
+        self.eliminar_originales = self.config.get('eliminar_originales', True)
         
         logger.info(f"PDFProcessor inicializado en: {base_path}")
     

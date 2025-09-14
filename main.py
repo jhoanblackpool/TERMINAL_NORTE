@@ -1,5 +1,6 @@
 import os
 import logging
+import configparser
 from modules.pdf_processor.pdf_processor import PDFProcessor
 
 # --- Configuración del Logging ---
@@ -20,9 +21,15 @@ def main():
     logging.info("=  INICIANDO ROBOT DE PROCESAMIENTO DE FACTURAS  =")
     logging.info("=================================================")
 
-    # La ruta base es el directorio donde se encuentra este script.
-    # Usamos esto para que el programa siempre sepa dónde está, sin importar desde dónde lo llames.
-    base_path = os.path.dirname(os.path.abspath(__file__))
+    # --- Leer configuración ---
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    # Obtener la ruta base desde la configuración, con un fallback al directorio del script
+    base_path = config.get('Rutas', 'base_path', fallback=os.path.dirname(os.path.abspath(__file__)))
+    
+    logging.info(f"Usando ruta base para datos: {base_path}")
+
 
     try:
         # 1. Creamos una instancia del procesador principal.

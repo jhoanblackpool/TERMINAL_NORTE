@@ -83,6 +83,7 @@ class DataExtractor:
     
     DEFAULT_PATRONES_ADICIONALES = {
         'numero_factura': [
+            PatronExtraccion("documento_equivalente", r"DOCUMENTO EQUIVALENTE\s*No\.\s*(\d+)"),
             PatronExtraccion("factura_numero", r"(?:FACTURA|FACT\.?)\s*(?:N[°º]?|#)?\s*(\d+)"),
             PatronExtraccion("numero_documento", r"N[°º]\s*DOCUMENTO:\s*(\d+)"),
             PatronExtraccion("folio", r"FOLIO:\s*(\d+)")
@@ -264,10 +265,6 @@ class DataExtractor:
         # Eliminar caracteres especiales al inicio y final
         texto = texto.strip(' .-,;:')
         
-        # Convertir a título si está todo en mayúsculas
-        if texto.isupper() and len(texto) > 3:
-            texto = texto.title()
-        
         return texto
     
     def formatear_local(self, local: str) -> str:
@@ -283,12 +280,8 @@ class DataExtractor:
         if not local:
             return local
         
-        # Si es solo números, agregar prefijo L
-        if local.isdigit():
-            return f"L{local.zfill(3)}"
-        
-        # Si ya tiene formato, solo limpiar
-        return local.upper().strip()
+        # Simplemente limpiar espacios al inicio y final
+        return local.strip()
     
     def parsear_fecha(self, fecha_str: str) -> Optional[datetime]:
         """
@@ -364,7 +357,7 @@ class DataExtractor:
             RUT formateado
         """
         # Eliminar puntos y guiones
-        rut = re.sub(r'[.-]', '', rut).upper()
+        rut = re.sub(r'[.-]', '', rut)
         
         if len(rut) > 1:
             # Formato XX.XXX.XXX-X

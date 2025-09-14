@@ -1,45 +1,68 @@
+# =================================================================
+# Archivos de Entorno Virtual de Python
+# =================================================================
+/venv/
+/env/
+/.venv/
 
-### Archivos de registro (Logs) ###
-*.log
-
-
-
-### Archivos de ejecución (Runtime) ###
-*.pid
-*.seed
-*.pid.lock
-
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
-
-# Otros archivos de editor
-*.swp
-*~
-
-### Archivos del sistema operativo ###
-.DS_Store
-Thumbs.db
-ehthumbs.db
-
-### Variables de entorno ###
-.env
-
-
-
-
-
-### Específico de Python ###
+# =================================================================
+# Archivos compilados y cache de Python
+# =================================================================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-venv/
-env/
-/.venv
+
+# =================================================================
+# Carpetas de datos y salida del Robot
+# ¡IMPORTANTE! Para no subir facturas ni datos sensibles al repositorio.
+# =================================================================
+/facturas_por_procesar/
+/facturas_procesadas/
+/facturas_con_error/
+/backup_originales/
+/temp/
+/logs/
+/metadata/
+
+# =================================================================
+# Archivos de configuración local (si se usaran)
+# Es una buena práctica no subir el config.ini directamente.
+# En su lugar, se puede subir un config.ini.template
+# =================================================================
+config.ini
+
+# =================================================================
+# Archivos de IDEs y editores de código
+# =================================================================
+# Visual Studio Code
+.vscode/
+# PyCharm
+.idea/
+
+# =================================================================
+# Archivos del sistema operativo
+# =================================================================
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+
+# =================================================================
+# Archivos temporales y de usuario
+# =================================================================
+# Capturas de pantalla y otros archivos temporales
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+
+# =================================================================
+# Paquetes y artefactos de construcción (build)
+# =================================================================
+/build/
+/dist/
+/downloads/
+/*.egg-info/
